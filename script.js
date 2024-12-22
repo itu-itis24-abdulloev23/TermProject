@@ -6,11 +6,12 @@ const scoreText = document.getElementById("ScoreText");
 const inputField = document.getElementById("InputField");
 const hearts = document.getElementById("Hearts");
 const blocks = document.getElementsByTagName("th");
+const gameOver = document.getElementById("GameOver");
 
 //game state
 let score = 0;
 let lives = 3;
-let gameOver = false;
+let isGameOver = false;
 let isLetterOpened = [false, false, false, false, false];
 
 // just for the sake of it
@@ -24,7 +25,6 @@ const closedLetter = "<img src=\"img/question.svg\" width=\"100\">"
 
 for(var i = 0; i < 5; i++) {
     lettersIMG.push("img/" + myWord[i] + ".svg");
-    isLetterOpened.push(false);
 }
 
 function updatHearts() {
@@ -47,7 +47,10 @@ function updateText() {
 }
 
 function fullUpdate() {
-    gameOver = lives <= 0;
+    isGameOver = lives <= 0 || isLetterOpened.indexOf(false) == -1;
+    if(isGameOver)
+        gameOver.innerText = lives <= 0 ? "GAME OVER" : "YOU WON!!";
+
     updateScore();
     updatHearts();
     updateText();
@@ -99,8 +102,9 @@ function openLetter(index) {
 function reset() {
     lives = 3;
     score = 0;
-    gameOver = false;
+    isGameOver = false;
     isLetterOpened.fill(false);
+    inputField.value = "";
     resetButton.hidden = true;
     submitButton.disabled = true;
 }
@@ -110,10 +114,11 @@ inputField.addEventListener("input", () => {
 })
 
 submitButton.addEventListener("click", () => {
-    if(!gameOver) {
+    if(!isGameOver) {
         guess(inputField.value);
         resetButton.hidden = false;
         inputField.value = "";
+        submitButton.disabled = true;
     }
     fullUpdate();
 });
