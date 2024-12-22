@@ -25,27 +25,64 @@ for(var i = 0; i < 5; i++) {
     isLetterOpened.push(false);
 }
 
-
-hearts.textContent = "Lives:";
-
-for(var i = 0; i < lives; i++) {
-    hearts.innerHTML += HEART;
-}
-
-function openLetter(index) {
-    blocks[index].innerHTML = `<img src=\"${lettersIMG[index]}\" width=\"100\">`;
-}
-
-submitButton.addEventListener("click", () => {
-    const input = String(inputField.value).toUpperCase();
-
-    console.log(input)
-    let indx = myWord.indexOf(input, 0);
-    console.log(myWord);
+function updatHearts() {
+    hearts.textContent = "Lives:";
     
-    console.log(indx)
+    for(var i = 0; i < lives; i++) {
+        hearts.innerHTML += HEART;
+    }
+}
+
+function guess(input) {
+    input = String(input).toUpperCase();
+    // console.log(input)
+
+    if(input.length == 1)
+        letterGuess(input)
+    else 
+        wordGuess(input);
+}
+
+function letterGuess(char) {
+    let indx = myWord.indexOf(char, 0);
+    
+    // console.log(indx)
 
     if(indx != -1) {
         openLetter(indx);
+    } else {
+        lives--;
     }
-})
+}
+
+function wordGuess(word) {
+    if(word != myWord) {
+        lives--;
+        return;
+    }
+
+    for(let i = 0; i < word.length; i++) 
+        openLetter(i);
+}
+
+function openLetter(index) {
+    if(isLetterOpened[index])
+        return;
+    
+    blocks[index].innerHTML = `<img src=\"${lettersIMG[index]}\" width=\"100\">`;
+    score += 20;
+    isLetterOpened[index] = true;
+}
+
+function updateScore() {
+    scoreText.textContent = `Score: ${score}`;
+}
+
+submitButton.addEventListener("click", () => {
+    guess(inputField.value);
+    updateScore();
+    updatHearts();
+});
+
+updateScore();
+updatHearts();
