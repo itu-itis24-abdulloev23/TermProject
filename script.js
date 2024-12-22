@@ -10,15 +10,17 @@ const blocks = document.getElementsByTagName("th");
 //game state
 let score = 0;
 let lives = 3;
+let gameOver = false;
+let isLetterOpened = [false, false, false, false, false];
 
-const HEART = "<img src=\"img/heart_tmp.png\" width=\"20\">"
-const words = ["ADIEU", "SYNTH", "STOCK", "NYMPH", "BLAST", 
-               "UNITY", "PRISM", "CHEST", "CLOUD", "BLINK"];
 // just for the sake of it
-
+const words = ["ADIEU", "SYNTH", "STOCK", "NYMPH", "BLAST", 
+    "UNITY", "PRISM", "CHEST", "CLOUD", "BLINK"];
+    
 const myWord = words[5];
 const lettersIMG = [];
-const isLetterOpened = [];
+const HEART = "<img src=\"img/heart_tmp.png\" width=\"20\">"
+const closedLetter = "<img src=\"img/question.svg\" width=\"100\">"
 
 for(var i = 0; i < 5; i++) {
     lettersIMG.push("img/" + myWord[i] + ".svg");
@@ -32,10 +34,31 @@ function updatHearts() {
         hearts.innerHTML += HEART;
     }
 }
+function updateScore() {
+    scoreText.textContent = `Score: ${score}`;
+}
+
+function updateText() {
+    for(let i = 0; i < myWord.length; i++)
+        if(isLetterOpened[i])
+            blocks[i].innerHTML = `<img src=\"${lettersIMG[i]}\" width=\"100\">`;
+        else
+            blocks[i].innerHTML = closedLetter;
+}
+
+function fullUpdate() {
+    gameOver = lives <= 0;
+    updateScore();
+    updatHearts();
+    updateText();
+}
+
 
 function guess(input) {
-    input = String(input).toUpperCase();
+    input = String(input).trim().toUpperCase();
     // console.log(input)
+    if(input.length == 0) 
+        return;
 
     if(input.length == 1)
         letterGuess(input)
@@ -69,20 +92,36 @@ function openLetter(index) {
     if(isLetterOpened[index])
         return;
     
-    blocks[index].innerHTML = `<img src=\"${lettersIMG[index]}\" width=\"100\">`;
     score += 20;
     isLetterOpened[index] = true;
 }
 
-function updateScore() {
-    scoreText.textContent = `Score: ${score}`;
+function reset() {
+    lives = 3;
+    score = 0;
+    gameOver = false;
+    isLetterOpened.fill(false);
+    resetButton.hidden = true;
+    submitButton.disabled = true;
 }
 
+inputField.addEventListener("input", () => {
+    submitButton.disabled = inputField.value.trim().length == 0;
+})
+
 submitButton.addEventListener("click", () => {
-    guess(inputField.value);
-    updateScore();
-    updatHearts();
+    if(!gameOver) {
+        guess(inputField.value);
+        resetButton.hidden = false;
+        inputField.value = "";
+    }
+    fullUpdate();
 });
 
-updateScore();
-updatHearts();
+resetButton.addEventListener("click", () => {
+    reset()
+    fullUpdate();
+});
+
+reset();
+fullUpdate();
