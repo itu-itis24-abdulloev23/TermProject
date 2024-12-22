@@ -1,10 +1,13 @@
-let boxes = document.querySelectorAll("th > img");
-let submitButton = document.getElementById("SubmitButton"); 
-let resetButton = document.getElementById("ResetButton");
-let scoreText = document.getElementById("ScoreText");
-let inputField = document.getElementById("InputField");
-let hearts = document.getElementById("Hearts");
+//html elements
+const boxes = document.querySelectorAll("th > img");
+const submitButton = document.getElementById("SubmitButton"); 
+const resetButton = document.getElementById("ResetButton");
+const scoreText = document.getElementById("ScoreText");
+const inputField = document.getElementById("InputField");
+const hearts = document.getElementById("Hearts");
+const blocks = document.getElementsByTagName("th");
 
+//game state
 let score = 0;
 let lives = 3;
 
@@ -14,12 +17,12 @@ const words = ["ADIEU", "SYNTH", "STOCK", "NYMPH", "BLAST",
 // just for the sake of it
 
 const myWord = words[5];
-const letters = ["B", "L", "A", "S", "T"];
-const blocks = document.getElementsByTagName("th")
 const lettersIMG = [];
+const isLetterOpened = [];
 
 for(var i = 0; i < 5; i++) {
-    lettersIMG.push("img/" + letters[i] + ".svg");
+    lettersIMG.push("img/" + myWord[i] + ".svg");
+    isLetterOpened.push(false);
 }
 
 
@@ -29,10 +32,6 @@ for(var i = 0; i < lives; i++) {
     hearts.innerHTML += HEART;
 }
 
-// for(var i = 0; i < blocks.length; i++) {
-//     blocks[i].innerHTML = `<img src=\"${lettersIMG[i]}\" width=\"100\">`;
-// }
-
 function openLetter(index) {
     blocks[index].innerHTML = `<img src=\"${lettersIMG[index]}\" width=\"100\">`;
 }
@@ -41,7 +40,8 @@ submitButton.addEventListener("click", () => {
     const input = String(inputField.value).toUpperCase();
 
     console.log(input)
-    let indx = letters.indexOf(input);
+    let indx = myWord.indexOf(input, 0);
+    console.log(myWord);
     
     console.log(indx)
 
