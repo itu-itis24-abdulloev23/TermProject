@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="30mm"
+   height="30mm"
+   viewBox="0 0 30 30"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <rect
+       x="0.57193595"
+       y="0.57193595"
+       width="111.33687"
+       height="112.48074"
+       id="rect4" />
+  </defs>
+  <text
+     xml:space="preserve"
+     transform="matrix(0.55097171,0,0,0.55097171,-2.1507452,-8.2321083)"
+     id="text4"
+     style="font-size:74.6667px;font-family:Rockwell;-inkscape-font-specification:Rockwell;text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect4);display:inline;fill:#1b9211;fill-opacity:1"><tspan
+       x="0.57226562"
+       y="68.509645"
+       id="tspan2"><tspan
+         style="font-family:'Fira Code';-inkscape-font-specification:'Fira Code'"
+         id="tspan1">S</tspan></tspan></text>
+</svg>
