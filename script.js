@@ -16,7 +16,7 @@ let isLetterOpened = [false, false, false, false, false];
 
 // just for the sake of it
 const words = ["ADIEU", "SYNTH", "STOCK", "NYMPH", "BLAST", 
-    "UNITY", "PRISM", "CHEST", "CLOUD", "BLINK"];
+               "UNITY", "PRISM", "CHEST", "CLOUD", "BLINK"];
     
 const myWord = words[5];
 const lettersIMG = [];
@@ -34,6 +34,7 @@ function updatHearts() {
         hearts.innerHTML += HEART;
     }
 }
+
 function updateScore() {
     scoreText.textContent = `Score: ${score}`;
 }
@@ -107,6 +108,7 @@ function reset() {
     inputField.value = "";
     resetButton.hidden = true;
     submitButton.disabled = true;
+    gameOver.innerText = "";
 }
 
 inputField.addEventListener("input", () => {
