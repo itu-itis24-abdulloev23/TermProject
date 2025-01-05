@@ -1,0 +1,91 @@
+body {
+    color: #1b9211ff; /*I used the same color in inkspace for the letters */
+    font-family: "Fira Code";
+    background-color: rgb(10, 10, 10);
+}
+
+h1 {
+    text-align: center;
+}
+
+th {
+    padding: 20px;
+    padding: 0px;
+}
+
+@keyframes popup {
+    from {
+        border: #1b9211ff 2px solid;
+    }
+    to {border: red  2px solid;}
+}
+
+.GreenBorder {
+    border: solid #1b9211ff;
+    border-width: medium;
+}
+
+#PredictonBox {
+    background-color: rgb(10, 10, 10);
+    padding: center 5%;
+    margin-top: 20px;
+    text-align: center; 
+}
+
+#GameBox {
+    margin: 10% 20%;
+    padding: 20px 20px 20px 20px;
+    background-color: rgb(26, 26, 26);
+}
+
+#ResetButton {
+}
+
+.Button {
+    background-color: rgb(26, 26, 26);
+    color: #1b9211ff;
+    border: solid #1b9211ff;
+    border-width: medium;
+    padding: 9px 16px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.2s;
+    transition-timing-function:cubic-bezier( 0.68, -0.55, 0.265, 1.55 ); 
+}
+
+.Button:disabled {
+    visibility: hidden;
+}
+
+.Button:hover {
+    border: double #1b9211ff thick;
+    border-radius: 10px;
+    padding: 13px 24px;
+}
+
+#SubmitButton { 
+}
+
+#InputField {
+    background-color: rgb(26, 26, 26);
+    color: #1b9211ff;
+}
+
+input:focus {
+    outline: none;
+}
+
+#ScoreText {
+    text-align: center;
+}
+
+#Hearts {
+    text-align: center;
+}
+
+#GameOver {
+    text-align: center;
+}
