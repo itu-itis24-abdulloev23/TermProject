@@ -7,37 +7,40 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-        <h1>word prediction game</h1>
-    </div>
-    <div>
-        <table>
-            <tr>
-                <th><img src="img/question.svg" width="100"></th>
-                <th><img src="img/question.svg" width="100"></th>
-                <th><img src="img/question.svg" width="100"></th>
-                <th><img src="img/question.svg" width="100"></th>
-                <th><img src="img/question.svg" width="100"></th>
-            </tr>
-        </table>
-    </div>
-    <div>
-        prediction:<input id="InputField" type="text">
-    </div>
-    <div>
-        <button id="SubmitButton">Submit</button>
-    </div>
-    <div>
-        <button id="ResetButton">Reset The game</button>
-    </div>
-    <div>
-        <p id="ScoreText">Score: 123</p>
-    </div>
-    <div>
-        <p id="Hearts">Lives:</p>
-    </div>
-    <div>
-        <p id="GameOver"></p>
+    <div id="GameBox" class="GreenBorder">
+        <div>
+            <h1>Word prediction game</h1>
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <th><img src="img/question.svg" width="50%"></th>
+                    <th><img src="img/question.svg" width="100"></th>
+                    <th><img src="img/question.svg" width="100"></th>
+                    <th><img src="img/question.svg" width="100"></th>
+                    <th><img src="img/question.svg" width="100"></th>
+               </tr>
+            </table>
+        </div>
+        <div id="PredictonBox" class="GreenBorder">
+            <h2>prediction:</h2>
+            <input id="InputField" type="text" class="GreenBorder">
+            <p>
+                <button id="SubmitButton" class="Button">Submit</button>
+            </p>
+            <p>
+                <button id="ResetButton" class="Button" hidden>Reset The game</button>
+            </p>
+        </div>
+        <div>
+            <p id="ScoreText">Score: 123</p>
+        </div>
+        <div>
+            <p id="Hearts">Lives:</p>
+        </div>
+        <div>
+            <p id="GameOver"></p>
+        </div>
     </div>
 </body>
 

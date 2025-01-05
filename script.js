@@ -21,7 +21,7 @@ const words = ["ADIEU", "SYNTH", "STOCK", "NYMPH", "BLAST",
 const myWord = words[5];
 const lettersIMG = [];
 const HEART = "<img src=\"img/heart_tmp.png\" width=\"20\">"
-const closedLetter = "<img src=\"img/question.svg\" width=\"100\">"
+const closedLetter = "<img src=\"img/question.svg\" size=\"50%\">"
 
 for(var i = 0; i < 5; i++) {
     lettersIMG.push("img/" + myWord[i] + ".svg");
@@ -106,7 +106,7 @@ function reset() {
     isGameOver = false;
     isLetterOpened.fill(false);
     inputField.value = "";
-    resetButton.hidden = true;
+    resetButton.disabled = true;
     submitButton.disabled = true;
     gameOver.innerText = "";
 }
@@ -118,7 +118,7 @@ inputField.addEventListener("input", () => {
 submitButton.addEventListener("click", () => {
     if(!isGameOver) {
         guess(inputField.value);
-        resetButton.hidden = false;
+        resetButton.disabled = false;
         inputField.value = "";
         submitButton.disabled = true;
     }
