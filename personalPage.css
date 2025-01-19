@@ -1,0 +1,88 @@
+/* 
+pallete
+main: #1D1616
+secondary: #8E1616
+highlight: #D84040
+rest: #EEEEEE
+*/
+
+:root {
+    --main: #181C14;
+    --secondary: #3C3D37;
+    --highlight: #D6BD98;
+    --rest: #ECDFCC;
+    --inlineselection: #03346E;
+}
+
+body {
+    font-family: "Roboto";
+    background-color: var(--secondary);
+    color: var(--main);
+    margin: 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+#mainPart {
+    background-color: var(--rest);
+    text-align: center;
+    font-size: 24px;
+    padding: 10px;
+}
+
+#gifSubtext {
+    margin: 0px;
+    font-size: 16px;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+header {
+    text-align: center;
+}
+
+footer {
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    font-size: 16px;
+}
+
+.inlineLink {
+    color: var(--main);
+    font-size: 24px;   
+    transition:0.3s;
+}
+
+.inlineLink:hover {
+    color: var(--inlineselection);
+    font-size: 32px;
+    transition: 0.3s;
+}
+
+a {
+    color: var(--highlight);
+    font-size: 16;
+    transition:0.3s;
+    text-decoration:underline ;
+}
+
+a:hover {
+    color: var(--rest);
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 20px;
+}
+
+header, footer {
+    padding: 5px;
+    background-color: var(--secondary);
+    color: var(--rest);
+}
